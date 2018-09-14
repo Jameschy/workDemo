@@ -1,0 +1,176 @@
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<style type="text/css">
+	.banner-title {
+		position: absolute;
+		text-align: center;
+		color: #FFFFFF;
+		text-align: center;
+		width: 100%;
+		line-height: 212px;
+	}
+	
+	@media only screen and (min-width: 769px) {
+		.banner-title {
+			line-height: 245px;
+		}
+		.classifybox {
+			background: #dddddd;
+			position: relative;
+			width: 984px;
+			top: 100px;
+			height: 750px;
+			overflow: hidden;
+			margin: auto
+		}
+		.bannerBox {
+			width: 475px;
+			height: auto;
+			background: #fff;
+			padding: 10px;
+			text-align: center;
+			overflow: hidden;
+			position: absolute;
+		}
+		.bannerBox:nth-child(1) {
+			/*top: 170px;*/
+			top:165px;
+			/*left: 285px;*/
+			left: 280px;
+			width: 410px;
+		}
+		.bannerBox:nth-child(2) {
+			top: 305px;
+			left: 0px;
+			/*width: 475px;*/
+		}
+
+		.bannerBox:nth-child(3) {
+			top: 305px;
+			left: 490px;
+			/*width: 475px;*/
+		}
+		.bannerBox:nth-child(4) {
+			top: 0px;
+			left: 0px;
+			/*width: 475px;*/
+		}
+		.bannerBox:nth-child(5) {
+			top: 0px;
+			left: 490px;
+			/*width: 475px;*/
+		}
+		.bannerBox:nth-child(1) .banner-title {
+			/*line-height: 212px;*/
+		}
+		.bannerBox img {
+			width: 100% !important;
+			height: auto !important;
+		}
+		.centerImg {
+			z-index: 1
+		}
+		.centerImgTop {
+			z-index: 2
+		}
+	}
+	
+	@media only screen and (max-width: 768px) {
+		.banner-title {
+			width: 96%;
+			line-height: 182px;
+		}
+		.classifybox {
+			width: 100%;
+			overflow: hidden;
+		}
+		.bannerBox {
+			width: 96%;
+			overflow: hidden;
+			padding: 10px 5px;
+		}
+		.bannerBox img {
+			width: 100% !important;
+			height: auto !important;
+		}
+	}
+</style>
+<div class="classifybox">
+	<div class="bannerBox centerImg">
+		<a href="##1">
+			<h3 class="banner-title">第一块</h3>
+			<img src="http://hmerp.site/uploads/images/20180910/9dbbe084d13585ebfba94a16fbd6affd.jpg" />
+		</a>
+	</div>
+	<div class="bannerBox">
+		<a href="##2">
+			<h3 class="banner-title">第二块</h3>
+			<img src="http://hmerp.site/uploads/images/20180910/b65bb7fc4e196d76a76ff8376f09928b.jpg" alt="">
+		</a>
+	</div>
+	<div class="bannerBox">
+		<a href="##3">
+			<h3 class="banner-title">第三块</h3>
+			<img src="http://hmerp.site/uploads/images/20180910/35e84f50e2e98eb1f02e413e5fe395d8.jpg" alt="">
+		</a>
+	</div>
+	<div class="bannerBox">
+		<a href="##4">
+			<h3 class="banner-title">第四块</h3>
+			<img src="http://hmerp.site/uploads/images/20180910/34e8b582ef6f9fad8a274bbe2465c32c.jpg" alt="">
+		</a>
+	</div>
+	<div class="bannerBox">
+		<a href="##5">
+			<h3 class="banner-title">第五块</h3>
+			<img src="http://hmerp.site/uploads/images/20180910/4d7a2535dae14f446b93d8d96b3b83d7.jpg" alt="">
+		</a>
+	</div>
+</div>
+<!--<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>-->
+<script src="jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	if(!/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+		hoverAnimate()
+	}
+
+	function hoverAnimate() {
+		var banerB = $(".bannerBox");
+		for(var i = 0; i < banerB.length; i++) {
+            banerB.eq(i).css({
+				top: banerB.eq(i).position().top,
+				left: banerB.eq(i).position().left
+			})
+		}
+        banerB.css("position", "absolute")
+		$.each(banerB, function(centerk, centerv) {
+			$(centerv).bind("mouseover", function() {
+				if(!banerB.is(":animated")) {
+					if(!$(centerv).hasClass(".centerImg")) {
+						var cis = $(".centerImg");
+						var lcis = cis.position().left;
+						var tcis = cis.position().top;
+						var wcis = cis.width();
+						var hcis = cis.height();
+                        banerB.eq(centerk).addClass("centerImgTop").animate({
+							left: lcis,
+							top: tcis,
+							width: wcis,
+							height: hcis
+						}, 600);
+                        cis.animate({
+							left: $(centerv).position().left,
+							top: $(centerv).position().top,
+							width: $(centerv).width(),
+							height: $(centerv).height()
+						}, 400, "swing", function() {
+							$(this).removeClass("centerImg");
+                            banerB.eq(centerk).addClass("centerImg").removeClass("centerImgTop")
+						});
+					}
+				} 
+				
+			})
+		});
+	}
+</script>

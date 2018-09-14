@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .boxB1 {
+            width: 1000px;
+            margin: 100px auto;
+            border: 1px solid blue;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .boxB1>div,
+        .boxB2>div{
+            position: absolute;
+            width: 465px;
+            height: 365px;
+            border: 1px solid #000;
+            background-color: red;
+            display: inline-flex;
+            margin: 2%;
+        }
+        .boxB1{
+            width: 1000px;
+            height: 800px;
+            position: relative;
+        }
+        .boxB1 div:nth-child(1){
+            top: 50%;
+            left: 50%;
+            background-color: cornflowerblue;
+        }
+        .boxB1 div:nth-child(2){
+            top: 0;
+            left: 0;
+        }
+        .boxB1 div:nth-child(3){
+            top: 0;
+            right: 0;
+        }
+        .boxB1 div:nth-child(4){
+            bottom: 0;
+            left: 0;
+        }
+        .boxB1 div:nth-child(5){
+            bottom: 0;
+            right: 0;
+        }
+        div:nth-child(2) {
+            /*background-color: pink;*/
+            transition: all 1s;
+        }
+
+        /* translate:(水平位移，垂直位移)*/
+        /*div:nth-child(2):hover {*/
+            .boxB1>div:nth-child(2):hover {
+            transform: translate(50%, 50%);
+        }
+        .boxB1>div:nth-child(3):hover {
+            transform: translate(-50%, 50%);
+        }
+        .boxB1>div:nth-child(4):hover {
+            transform: translate(50%, -50%);
+        }
+        .boxB1>div:nth-child(5):hover {
+            transform: translate(-50%, -50%);
+        }
+        .boxBox{
+            margin: 0 auto;
+            width: 1000px;
+            border: 1px solid black;
+        }
+        .boxB1 .box0{
+            background-color:yellow ;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="boxBox">
+    <!--<div class="boxB2">-->
+        <!--<div class="box11">1</div>-->
+    <!--</div>-->
+<div class="boxB1">
+    <div class="box0">0</div>
+    <div class="box1">1</div>
+    <div class="box2">2</div>
+    <div class="box3">3</div>
+    <div class="box2">4</div>
+</div>
+
+</div>
+
+</body>
+</html>

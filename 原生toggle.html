@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		.show {
+			opacity: 0;
+			visibility: hidden;
+			transition: all 0.5s linear;
+			background: red;
+		}
+		
+		.hide {
+			visibility: visible;
+			transition: all 1s linear;
+			background: blue;
+		}
+		
+		#box {
+			border: 1px solid #222;
+			width: 500px;
+			height: 80px;
+			text-align: center;
+			line-height: 80px;
+			background: red;
+		}
+	</style>
+
+	<body>
+		<div id="show">AAAA 显示</div>
+		<div id="box">
+			hello world!
+		</div>
+	</body>
+	<script type="text/javascript">
+		var show = document.getElementById('show');
+		var box = document.getElementById('box');		
+		var str= show.innerHTML;
+		
+//		console.log(typeof(str));
+		show.addEventListener('click', function() {
+			str =""
+			if(hasClass(box, 'show')) {
+				str="隐藏";
+//				document.write(str.replace(/隐藏/,"显示"));				
+				removeClass(box, 'show');
+				addClass(box, 'hide');
+//				document.write(str.replace(/隐藏/,"显示"));	
+			} else {
+				str="显示";
+//				document.write(str.replace(/显示/,"隐藏"));
+				removeClass(box, 'hide');
+				addClass(box, 'show');
+//				document.write(str.replace(/显示/,"隐藏"));
+
+			}
+			console.log("str");
+		})
+		box.onclick = function() {
+			alert('s');
+		}
+
+		function addClass(el, className) {
+			if(hasClass(el, className)) {
+				return
+			}
+			let newClass = el.className.split(' ')
+			newClass.push(className)
+			el.className = newClass.join(' ')
+		}
+
+		function hasClass(el, className) {
+			// \s匹配任何空白字符，包括空格、制表符、换页符等等
+			let reg = new RegExp('(^|\\s)' + className + '(\\s|$)')
+			return reg.test(el.className)
+		}
+
+		function removeClass(el, className) {
+			if(!hasClass(el, className)) {
+				return
+			}
+			let newClass = el.className.split(' ')
+			newClass.forEach(function(val, index, newClass) {
+				if(val === className) {
+					newClass.splice(index, 1);
+				}
+			})
+			el.className = newClass.join(' ')
+		}
+
+		function repalceHtml(str) {
+			var dd = str.replace(/<\/?.+?>/g, "");
+			var dds = dd.replace(/ /g, ""); //dds为得到后的内容
+			return dds;
+		}
+	</script>
+
+</html>
